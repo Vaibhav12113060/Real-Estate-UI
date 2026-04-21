@@ -1,10 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import Logo from "../assets/Footer-Page-Assets/Logo.png";
+
 const Footer = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [showSuccess, setShowSuccess] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const existing = JSON.parse(
+      localStorage.getItem("novo_submissions") || "[]",
+    );
+    const newSubmission = { ...formData, date: new Date().toISOString() };
+    localStorage.setItem(
+      "novo_submissions",
+      JSON.stringify([...existing, newSubmission]),
+    );
+
+    setShowSuccess(true);
+    setFormData({ name: "", email: "", message: "" });
+
+    setTimeout(() => {
+      setShowSuccess(false);
+    }, 4000);
+  };
+
   return (
     // Background is now a clean solid color
-    <div className="w-full bg-[#1A1A1A] text-white py-24 px-6 md:px-20 font-sans">
-      <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-20">
+    <div className="relative w-full bg-[#1A1A1A] text-white py-16 md:py-24 px-6 md:px-20 font-sans">
+      {/* Success Message popup */}
+      {showSuccess && (
+        <div className="fixed top-0 left-0 w-full bg-[#C48A3A] text-white text-center py-4 z-[100] shadow-lg text-lg font-medium transition-all duration-500">
+          ✅ Successfully sent! We will review your message shortly.
+        </div>
+      )}
+      <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
         {/* Contact Info Side */}
         <div className="flex flex-col justify-between">
           <div className="space-y-2 opacity-80 font-light">
@@ -67,34 +104,45 @@ const Footer = () => {
         </div> */}
 
         {/* Registration Form Side */}
-        <div className="border-l border-gray-800/50 pl-10 md:pl-20">
-          <h2 className="text-5xl font-light text-gray-400 mb-2 tracking-tight">
+        <div className="border-t md:border-t-0 md:border-l border-gray-800/50 pt-12 md:pt-0 pl-0 md:pl-20 mt-6 md:mt-0">
+          <h2 className="text-4xl md:text-5xl font-light text-gray-400 mb-2 tracking-tight">
             Register your interest
           </h2>
-          <p className="text-sm opacity-60 mb-16 italic font-light">
+          <p className="text-sm opacity-60 mb-10 md:mb-16 italic font-light">
             Construction commencing during 2023 earthworks season.
           </p>
 
-          <form className="space-y-12">
+          <form className="space-y-12" onSubmit={handleSubmit}>
             {[
-              { label: "YOUR NAME", placeholder: "e.g. Mohammed" },
-              { label: "YOUR E-MAIL", placeholder: "e.g. mohammed@gmail.com" },
-              { label: "YOUR MESSAGES", placeholder: "e.g. Hello!" },
+              {
+                name: "name",
+                label: "YOUR NAME",
+                placeholder: "e.g. Mohammed",
+              },
+              {
+                name: "email",
+                label: "YOUR E-MAIL",
+                placeholder: "e.g. mohammed@gmail.com",
+              },
+              {
+                name: "message",
+                label: "YOUR MESSAGES",
+                placeholder: "e.g. Hello!",
+              },
             ].map((field, i) => (
               <div key={i} className="flex flex-col group">
-                {/* 1. Placeholder (Top) */}
-                <span className="text-xl font-light text-gray-600 mb-2 transition-all">
-                  {field.placeholder}
-                </span>
+                <input
+                  type={field.name === "email" ? "email" : "text"}
+                  name={field.name}
+                  value={formData[field.name]}
+                  onChange={handleChange}
+                  required
+                  placeholder={field.placeholder}
+                  className="w-full bg-transparent outline-none text-white text-xl font-light placeholder:text-gray-600 focus:placeholder:opacity-0 mb-2 transition-all"
+                />
 
-                {/* 2. Input Line (Straight) */}
-                <div className="w-full h-[1px] bg-[#C48A3A]/60 group-focus-within:bg-[#C48A3A] transition-colors relative">
-                  {/* Actual hidden input for data collection */}
-                  <input
-                    type="text"
-                    className="absolute inset-0 w-full bg-transparent outline-none text-white opacity-0 focus:opacity-100 z-10"
-                  />
-                </div>
+                {/* Input Line (Straight) */}
+                <div className="w-full h-[1px] bg-[#C48A3A]/60 group-focus-within:bg-[#C48A3A] transition-colors relative"></div>
 
                 {/* 3. Input Label Name (Bottom) */}
                 <label className="text-[10px] uppercase tracking-[0.3em] opacity-40 mt-3 font-medium">
@@ -104,7 +152,10 @@ const Footer = () => {
             ))}
 
             <div className="pt-10 flex justify-end">
-              <button className="flex items-center gap-6 px-12 py-3 border border-gray-600 rounded-full text-[10px] uppercase tracking-widest hover:bg-[#C48A3A] hover:border-[#C48A3A] hover:text-white transition-all duration-500 group">
+              <button
+                type="submit"
+                className="flex items-center gap-6 px-12 py-3 border border-gray-600 rounded-full text-[10px] uppercase tracking-widest hover:bg-[#C48A3A] hover:border-[#C48A3A] hover:text-white transition-all duration-500 group"
+              >
                 Send Message{" "}
                 <span className="text-lg group-hover:translate-x-2 transition-transform duration-300">
                   →

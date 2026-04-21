@@ -15,29 +15,32 @@ function App() {
           body, .font-sans {
             font-family: 'Outfit', sans-serif !important;
           }
+          html {
+            scroll-behavior: smooth;
+          }
         `}
       </style>
       <Navbar />
-      <section id="landing">
+      <section id="home">
         <Landing />
       </section>
-      <section id="introduction">
+      <section id="about">
         <Introduction />
       </section>
-      <section id="design">
+      <section id="services">
         <DesignProcess />
       </section>
-      <section id="success">
+      <section id="projects">
         <ProjectSuccess />
       </section>
-      <section id="footer">
+      <section id="contact">
         <Footer />
       </section>
 
       {/* Scroll to Top Button */}
       <a
-        href="#landing"
-        className="fixed bottom-8 right-8 z-50 bg-[#C48A3A] text-white w-12 h-12 flex items-center justify-center rounded-full shadow-lg hover:bg-[#a67430] hover:-translate-y-1 transition-all duration-300 text-xl"
+        href="#home"
+        className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 bg-[#C48A3A] text-white w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full shadow-lg hover:bg-[#a67430] hover:-translate-y-1 transition-all duration-300 text-lg md:text-xl"
         title="Scroll to Top"
       >
         ↑

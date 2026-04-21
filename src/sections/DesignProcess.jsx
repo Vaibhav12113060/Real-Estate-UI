@@ -80,7 +80,7 @@ const DesignProcess = () => {
           <p className="text-[12px] uppercase tracking-[0.5em] text-gray-300 mb-8">
             Innovative architectural designs
           </p>
-          <h1 className="text-5xl md:text-[80px] font-light leading-[1.1] max-w-[1100px] mx-auto mb-20 tracking-tight">
+          <h1 className="text-4xl md:text-[80px] font-light leading-[1.1] max-w-[1100px] mx-auto mb-16 md:mb-20 tracking-tight">
             The place where you spend your time is a direct reflection of your
             culture
           </h1>
@@ -101,7 +101,7 @@ const DesignProcess = () => {
         </div>
 
         {/* --- RELEVANT SUB-HEADING (FIXED) --- */}
-        <div className="mt-32 mb-12">
+        <div className="mt-20 md:mt-32 mb-12 text-center md:text-left">
           <h3 className="text-[18px] md:text-[22px] font-normal tracking-wide text-gray-200">
             Our work goes through three stages
           </h3>
@@ -112,10 +112,10 @@ const DesignProcess = () => {
           {stages.map((stage) => (
             <div
               key={stage.id}
-              className="relative border-t border-gray-500/40 pt-16 pb-32 flex flex-col md:flex-row gap-16"
+              className="relative border-t border-gray-500/40 pt-10 md:pt-16 pb-20 md:pb-32 flex flex-col md:flex-row gap-8 md:gap-16"
             >
               {/* Left Column: Number, Title, Button */}
-              <div className="flex-1 flex flex-col justify-between min-h-[350px]">
+              <div className="flex-1 flex flex-col justify-between min-h-[200px] md:min-h-[350px]">
                 <div>
                   <div className="mb-6">
                     <span className="text-[15px] font-bold text-[#C48A3A] tracking-tighter">
@@ -123,13 +123,13 @@ const DesignProcess = () => {
                       <div className="w-8 h-[2px] bg-[#C48A3A] mt-1"></div>
                     </span>
                   </div>
-                  <h2 className="text-5xl md:text-6xl font-normal leading-tight">
+                  <h2 className="text-4xl md:text-6xl font-normal leading-tight">
                     {stage.title}
                   </h2>
                 </div>
 
                 {/* View Project Button (Bottom Positioned) */}
-                <div className="mt-16">
+                <div className="mt-10 md:mt-16">
                   <button className="group flex items-center gap-5 px-12 py-3.5 border border-gray-400 rounded-full text-[12px] uppercase tracking-[0.2em] hover:bg-white hover:text-[#3D4A59] transition-all duration-300">
                     View Project
                     <span className="text-xl group-hover:translate-x-1 transition-transform">

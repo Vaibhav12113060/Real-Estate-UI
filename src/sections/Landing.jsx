@@ -13,8 +13,8 @@ const Landing = () => {
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-10 h-full">
         {/* MAIN HEADLINE - Exact positioning and font weight */}
-        <div className="mt-16 mb-4">
-          <h1 className="text-[90px] leading-[0.95] font-light text-[#3D4A59] tracking-tight">
+        <div className="mt-8 md:mt-16 mb-8 md:mb-4">
+          <h1 className="text-[50px] md:text-[90px] leading-[1.1] md:leading-[0.95] font-light text-[#3D4A59] tracking-tight text-center md:text-left">
             <span className="text-[#C48A3A] font-normal">Our</span> Implicit
             Belief <span className="text-[#C48A3A]">in</span>
             <br />
@@ -23,9 +23,9 @@ const Landing = () => {
         </div>
 
         {/* CONTENT AREA */}
-        <div className="relative w-full h-[600px]">
+        <div className="relative w-full h-auto md:h-[600px] flex flex-col md:block pb-16 md:pb-0">
           {/* 1. TOP RIGHT TEXT BLOCKS */}
-          <div className="absolute top-[-40px] right-0 text-right space-y-4 max-w-[280px]">
+          <div className="relative md:absolute md:top-[-40px] md:right-0 text-center md:text-right space-y-4 max-w-full md:max-w-[280px] mb-10 md:mb-0 flex flex-col items-center md:items-end">
             <p className="text-[11px] leading-tight text-gray-500 uppercase tracking-wider">
               Decorations and finishes of ideas in all <br /> interior and
               exterior implementation.
@@ -36,8 +36,26 @@ const Landing = () => {
             </h3>
           </div>
 
+          {/* 3. MAIN CENTER IMAGE WITH L-SHAPED GOLDEN FRAME */}
+          <div className="relative md:absolute md:left-[52%] md:top-[10%] md:-translate-x-1/2 w-full flex justify-center mb-10 md:mb-0 order-first md:order-none mt-8 md:mt-0">
+            <div className="relative w-[85%] md:w-auto">
+              {/* L-Shape Frame (Top & Right) */}
+              <div className="absolute -top-6 -right-6 md:-top-10 md:-right-10 w-[65%] h-[55%] border-t-[8px] border-r-[8px] md:border-t-[14px] md:border-r-[14px] border-[#C48A3A] z-0"></div>
+
+              {/* Corner Frame (Bottom Left) */}
+              <div className="absolute -bottom-4 -left-4 w-8 h-8 md:w-12 md:h-12 border-b-[8px] border-l-[8px] md:border-b-[14px] md:border-l-[14px] border-[#C48A3A] z-0"></div>
+
+              {/* Main Building Image */}
+              <img
+                src={mainImage}
+                className="relative z-10 w-full md:w-[640px] shadow-2xl block"
+                alt="Architecture Main"
+              />
+            </div>
+          </div>
+
           {/* 2. SMALL IMAGE WITH TOP GOLDEN BAR (Right Side) */}
-          <div className="absolute top-[120px] right-0 w-[230px]">
+          <div className="hidden md:block absolute top-[120px] right-0 w-[230px]">
             <div className="w-full h-[14px] bg-[#C48A3A]"></div>
             <img
               src={smallImage}
@@ -46,26 +64,8 @@ const Landing = () => {
             />
           </div>
 
-          {/* 3. MAIN CENTER IMAGE WITH L-SHAPED GOLDEN FRAME */}
-          <div className="absolute left-[52%] top-[10%] -translate-x-1/2">
-            <div className="relative">
-              {/* L-Shape Frame (Top & Right) */}
-              <div className="absolute -top-10 -right-10 w-[65%] h-[55%] border-t-[14px] border-r-[14px] border-[#C48A3A] z-0"></div>
-
-              {/* Corner Frame (Bottom Left) */}
-              <div className="absolute -bottom-4 -left-4 w-12 h-12 border-b-[14px] border-l-[14px] border-[#C48A3A] z-0"></div>
-
-              {/* Main Building Image */}
-              <img
-                src={mainImage}
-                className="relative z-10 w-[640px] shadow-2xl block"
-                alt="Architecture Main"
-              />
-            </div>
-          </div>
-
           {/* 4. WATCH VIDEO ELEMENT (Bottom Left) */}
-          <div className="absolute bottom-[20px] left-0">
+          <div className="relative md:absolute md:bottom-[20px] md:left-0 mb-10 md:mb-0 flex justify-center md:block">
             <div className="relative w-32 h-32 flex items-center justify-center">
               {/* Dashed spinning border */}
               <div className="absolute inset-0 border border-dashed border-gray-400 rounded-full animate-[spin_15s_linear_infinite]"></div>
@@ -82,8 +82,8 @@ const Landing = () => {
           </div>
 
           {/* 5. DESCRIPTION TEXT (Bottom Right) */}
-          <div className="absolute bottom-[-60px] right-0 max-w-[320px] text-right">
-            <div className="w-full h-[1px] bg-gray-400 mb-6"></div>
+          <div className="relative md:absolute md:bottom-[-60px] md:right-0 max-w-full md:max-w-[320px] text-center md:text-right flex flex-col items-center md:items-end">
+            <div className="w-[150px] md:w-full h-[1px] bg-gray-400 mb-6"></div>
             <p className="text-[12px] leading-[1.8] text-gray-500 font-light">
               Our architectural team excels at creating visually appealing and
               function-driven spaces. We specialize in residential, commercial,
@@ -94,7 +94,7 @@ const Landing = () => {
         </div>
 
         {/* BOTTOM FULL WIDTH LINE */}
-        <div className="absolute bottom-[-120px] left-10 right-10 h-[1px] bg-gray-300 opacity-60"></div>
+        <div className="hidden md:block absolute bottom-[-120px] left-10 right-10 h-[1px] bg-gray-300 opacity-60"></div>
       </div>
     </div>
   );

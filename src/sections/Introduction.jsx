@@ -3,7 +3,7 @@ import introImage from "../assets/Introduction-Page-Assets/Intro1.png";
 
 const Introduction = () => {
   return (
-    <div className="w-full bg-[#3D4A59] text-white py-20 px-10">
+    <div className="w-full bg-[#3D4A59] text-white py-16 md:py-20 px-6 md:px-10">
       <div className="max-w-[1400px] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-start">
           {/* Left Content */}
@@ -55,7 +55,7 @@ const Introduction = () => {
         </div>
 
         {/* Bottom Detailed Text */}
-        <div className="mt-40 border-t border-gray-500 pt-10 flex flex-col md:flex-row justify-between items-end gap-10">
+        <div className="mt-20 md:mt-40 border-t border-gray-500 pt-10 flex flex-col md:flex-row justify-between items-start md:items-end gap-10">
           <div className="max-w-[800px]">
             <div className="flex justify-between text-[10px] opacity-50 mb-10 uppercase tracking-widest">
               <span>Our Success</span>
@@ -70,7 +70,7 @@ const Introduction = () => {
           </div>
 
           {/* Round Next Button */}
-          <div className="w-32 h-32 rounded-full border border-[#C48A3A]/40 flex items-center justify-center cursor-pointer hover:bg-[#C48A3A]/10 transition-all">
+          <div className="w-24 h-24 md:w-32 md:h-32 shrink-0 rounded-full border border-[#C48A3A]/40 flex items-center justify-center cursor-pointer hover:bg-[#C48A3A]/10 transition-all self-center md:self-auto">
             <span className="text-lg tracking-widest">Next</span>
           </div>
         </div>
